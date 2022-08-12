@@ -13,6 +13,7 @@ type ShareFile struct {
 	Uk      int    `json:"uk"`
 }
 
+// Verify 获取提取码的sekey 在获取和转存的时候需要用到
 func Verify(surl string, pwd string, sekey *string) error {
 	param := url.Values{}
 	param.Add("surl", surl)
@@ -45,6 +46,7 @@ func Verify(surl string, pwd string, sekey *string) error {
 	return nil
 }
 
+// List 获取分享文件列表
 func List(surl, sekey string, share *ShareFile) error {
 	param := url.Values{}
 	param.Add("shorturl", surl)
@@ -77,6 +79,7 @@ func List(surl, sekey string, share *ShareFile) error {
 	return nil
 }
 
+// Transfer 转存函数
 func Transfer(accessToken string, shareId, uk int, sekey, path, fsId string) error {
 	param := url.Values{}
 	param.Add("method", "transfer")
